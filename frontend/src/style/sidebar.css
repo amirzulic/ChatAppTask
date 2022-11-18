@@ -1,3 +1,11 @@
 .userTab:hover {
     background-color: #cccac4;
 }
+
+.title {
+    font-size: 30px;
+}
+
+.borderRadius {
+    border-radius: 20px;
+}
