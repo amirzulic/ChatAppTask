@@ -4,7 +4,7 @@ import "../style/global_chat.css";
 function GlobalChat(props) {
     return(
         <div>
-            <div className="row border borderRadius text-center">
+            <div className="row border borderRadius text-center text-primary">
                 <h1>GLOBAL CHAT</h1>
             </div>
             <div className="row">

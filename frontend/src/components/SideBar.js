@@ -4,7 +4,7 @@ import "../style/sidebar.css";
 function SideBar(props) {
     return(
         <div className="text-center">
-            <div className="row border borderRadius">
+            <div className="row border borderRadius softGreen text-white">
                 <h1>ONLINE USERS</h1>
             </div>
             {props.userData.connected ?
