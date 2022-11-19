@@ -1,3 +1,7 @@
 .notificationTab:hover {
     background-color: #cccac4;
 }
+
+.softBlue {
+    background: rgba(0, 0, 255, 0.5);
+}

@@ -4,7 +4,7 @@ import "../style/notifications.css";
 function Notifications(props) {
     return(
         <div>
-            <div className="row border borderRadius text-center">
+            <div className="row border borderRadius text-center softBlue text-white">
                 <h1>NOTIFICATIONS</h1>
             </div>
             {[...props.notification_online.keys()].map((name, index) => (

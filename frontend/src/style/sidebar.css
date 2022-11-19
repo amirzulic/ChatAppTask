@@ -9,3 +9,7 @@
 .borderRadius {
     border-radius: 20px;
 }
+
+.softGreen {
+    background: rgba(0, 204, 0, 0.4);
+}
