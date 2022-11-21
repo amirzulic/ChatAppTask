@@ -1,10 +1,27 @@
 package com.example.backend.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "message")
 public class Message {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "sendername")
     private String senderName;
+
+    @Column(name = "receivername")
     private String receiverName;
+
+    @Column(name = "message")
     private String message;
+
+    @Column(name = "date")
     private String date;
+
+    @Column(name = "status")
     private Status status;
 
     public Message(String senderName, String receiverName, String message, String date, Status status) {
