@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import { uniqueNamesGenerator, Config, adjectives, colors, animals } from 'unique-names-generator';
 import {over} from 'stompjs';
 import SockJS from "sockjs-client";
+import { getMessages, sendMessage } from "./services/MessageService";
 var stompClient = null;
 
 function App() {
@@ -23,6 +24,11 @@ function App() {
 
   useEffect(() => {
     const randomName = uniqueNamesGenerator({ dictionaries: [colors, animals] });
+    getMessages().then(res => {
+      setGlobalChat(res.data);
+    }).catch((err) => {
+      console.log(err);
+    })
     setUserData({...userData, "username":randomName});
   }, []);
 
@@ -78,13 +84,13 @@ function App() {
     let payloadData = JSON.parse(payload.body);
     if(privateChat.get(payloadData.senderName)) {
       privateChat.get(payloadData.senderName).push(payloadData);
-      alert(userData.username + " sent you a message!");
+      alert(payloadData.senderName + " sent you a message!");
       setPrivateChat(new Map(privateChat));
     } else {
       let list = [];
       list.push(payloadData);
       privateChat.set(payloadData.senderName, list);
-      alert(userData.username + " sent you a message!");
+      alert(payloadData.senderName + " sent you a message!");
       setPrivateChat(new Map(privateChat));
     }
   }
@@ -96,6 +102,11 @@ function App() {
         message: userData.message,
         status: 'MESSAGE'
       };
+      sendMessage(chatMessage).then(res => {
+        console.log(res.data);
+      }).catch((err) => {
+        console.log(err);
+      }) 
       stompClient.send('/app/message', {}, JSON.stringify(chatMessage));
       setUserData({...userData, "message": ""})
     }
